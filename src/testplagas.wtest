@@ -1,0 +1,41 @@
+import elementos.*
+import plagas.*
+
+describe "Huerta"{
+	const huerta = new Huerta(capacidadDeProduccion=50)
+	const pulga1 = new Pulgas(poblacion =40)
+	const pulga2 = new Pulgas(poblacion =15)
+	method initialize(){
+		nivelDeProduccion.nivel(50)
+	}
+	
+	test "Plagas que no transmiten enfermedades"{
+		huerta.recibeAtaque(pulga1)
+		assert.equals(50 - 8 - 10 , huerta.capacidadDeProduccion())
+		assert.equals( 40 * 1.1, pulga1.poblacion())
+	}
+	
+}
+
+describe "Hogar " {
+	const hogar1 = new Hogar(nivelDeMugre= 50, confort=200)
+	const cucas = new Cucarachas(poblacion = 20, pesoPromedio =5)
+	const barrio1 =new Barrios()
+	
+	
+	
+	test "Hogar vcon plaga de Cucarachas"{
+		
+		hogar1.recibeAtaque(cucas)
+		
+	assert.that (hogar1.esBueno())
+	assert.equals(50 - 10, hogar1.nivelDeMugre())
+	assert.equals( 40 * 1.2, cuca.poblacion())
+	}
+	
+	/*test "barrio es copado"{
+		barrio1.agregaeElementos(hogar1)
+		assert.that(not barrio1.esCopado())
+	}*/
+}
+}
